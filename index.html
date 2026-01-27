@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Restaurant Ordering System</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right,#ffe0b2,#fff3e0);
+}
+
+h1{
+  text-align:center;
+  color:#e65100;
+}
+
+.container{
+  display:flex;
+  height:100vh;
+}
+
+.menu{
+  width:70%;
+  overflow-y:auto;
+  padding:20px;
+}
+
+.item{
+  background:white;
+  margin:20px;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  animation: float 3s infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+  100%{transform:translateY(0);}
+}
+
+.item img{
+  width:120px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.info{
+  margin-left:20px;
+}
+
+.cart{
+  width:30%;
+  background:#ffccbc;
+  padding:20px;
+}
+
+button{
+  background:#ff7043;
+  border:none;
+  padding:10px 15px;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#e64a19;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🍽️ Restaurant Ordering System</h1>
+
+<div class="container">
+
+<!-- MENU -->
+<div class="menu">
+
+  <div class="item">
+    <img src="images/burger.png" onclick="addItem('Burger',120)">
+    <div class="info">
+      <h2>🍔 Burger</h2>
+      <p>Price: ₹120</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/pizza.png" onclick="addItem('Pizza',250)">
+    <div class="info">
+      <h2>🍕 Pizza</h2>
+      <p>Price: ₹250</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/drink.png" onclick="addItem('Drink',60)">
+    <div class="info">
+      <h2>🥤 Drink</h2>
+      <p>Price: ₹60</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/biryani.png" onclick="addItem('biryani',60)">
+    <div class="info">
+      <h2> biryani</h2>
+      <p>Price: ₹60</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+  <h2>🛒 Cart</h2>
+  <p id="cartItems">No items</p>
+  <h3 id="total">Total: ₹0</h3>
+</div>
+
+</div>
+
+<script>
+let cart=[];
+let total=0;
+
+function addItem(item,price){
+  cart.push(item);
+  total+=price;
+  document.getElementById("cartItems").innerText=cart.join(", ");
+  document.getElementById("total").innerText="Total: ₹"+total;
+}
+</script>
+
+</body>
+</html>
